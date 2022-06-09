@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'public/output.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <div class="navbar bg-gray-700 ">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <label tabindex="0" class="btn btn-ghost btn-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+              </svg>
+            </label>
+            <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-gray-700 rounded-box w-52">
+              <li><a>Homepage</a></li>
+              <li><a>Portfolio</a></li>
+              <li><a>About</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar-center">
+          <a class="btn btn-ghost normal-case text-lg">PASS-MANAGER</a>
+        </div>
+        
+        <div class="navbar-end mr-10 ">
+          test
+        </div>
+      </div>
+
+
+
+
+
+
+
+    <div class="grid place-items-center mt-40">
+
+        <div class="text-center">
+          <span class="text-teal-600 font-bold content-center lg:text-4xl md:text-2xl "> ENTER MASTER PASSWORD </span>
+        </div>
+        <div class="form-control mt-10 text-center mx-auto lg:-ml-32 lg:mx-0">
+          <div class="input-group  ">
+            <div class="relative ">
+              <div class="absolute inset-y-0 right-14 flex items-center  ">
+                <input class="hidden js-password-toggle" id="toggle" type="checkbox" />
+              
+                <label class=" cursor-pointer js-password-label " for="toggle"><i
+                    class="fa-solid fa-eye-slash fa-sm "></i></label>
+              </div>
+              <input type="password" placeholder=" pswd" class=" input input-bordered lg:h-10 lg:w-72 js-password"
+                id="password" />
+    
+              <button class="btn btn-square h-px w-auto -ml-2.5">
+    
+                <i class="fa-solid fa-arrow-right-to-bracket text-teal-600"></i>
+              </button>
+    
+            </div>
+            
+          </div>
+          
+        </div>
+        <div class="container   text-center ml-10">
+          <a class="link link-hover text-xs mt-2 ml-10 mx-auto">forget password ?</a>
+        </div>
+        
+        
+    </div>
+        <script src="{% static 'src/eye.js' %}"></script>
+</body>
+</html>

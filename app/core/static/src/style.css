@@ -10,3 +10,30 @@
     font-size: 0.875rem;
     
   }
+.mt-28{
+    margin-top: 4rem;
+
+}
+
+.mt-20{
+  margin-top: 3rem.5rem;
+}
+.lg\:w-80 {
+  width: 20rem;
+}
+.lg\:w-75 {
+  width: 18.7rem;
+}
+.btn-wide {
+  width: 16rem/* 256px */;
+}
+
+.mt-5 {
+  margin-top: 1.25rem/* 20px */;
+}
+
+@media (min-width: 1024px) {
+  .lg\:w-60 {
+      width: 15rem/* 240px */;
+  }
+}

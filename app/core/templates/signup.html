@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+{% load static %}
+<!-- {%block style%} <link rel="stylesheet" href="{% static 'public/output.css' %}">{%endblock%} -->
+
+{%block snup%} <a class="btn hover:bg-teal-600" href="{% url 'login' %}">  Already HAVE ms-psw</a>{%endblock%}
+    
+    {% block content %}
+    <div class="grid place-items-center mt-28">
+
+      <div class="text-center">
+        <span class="text-teal-600 font-bold content-center lg:text-4xl md:text-2xl "> ENTER MASTER PASSWORD </span>
+      </div>
+      <div class="form-control  mt-10">
+        
+        <label class="input-group mt-3 ">
+          <span>Email</span>
+          <input type="text" placeholder="info@site.com" class="input input-bordered lg:h-10 lg:w-80" />
+        </label>
+          
+        <label class="input-group mt-3 ">
+          <span>Name</span>
+          <input type="text" placeholder="info@site.com" class="input input-bordered lg:h-10 lg:w-80" />
+        </label>
+          
+        <label class="input-group mt-3 ">
+          <span>Image</span>
+          <input type="text" placeholder="info@site.com" class="input input-bordered lg:h-10 lg:w-80" />
+        </label>
+          
+        <label class="input-group mt-3 ">
+          <span>Password</span>
+          <input type="text" placeholder="info@site.com" class="input input-bordered lg:h-10 lg:w-75" />
+        </label>
+          
+        <label class="input-group mt-3 ">
+          <span>Confirm-Ps</span>
+          <input type="text" placeholder="info@site.com" class="input input-bordered lg:h-10 lg:w-72" />
+        </label>
+      </div>
+     
+      <button class="btn btn-wide btn-outline mt-5">Submit <i class="fa fa-paper-plane " aria-hidden="true"></i></button>
+      
+  </div>
+
+  
+      <script src="{% static 'src/eye.js' %}"></script>
+        {% endblock %}

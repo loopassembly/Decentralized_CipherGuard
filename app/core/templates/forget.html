@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+
+{%block snup%} <a class="btn hover:bg-teal-600 " href="{% url 'login' %}"> Remember MS-PSWD</a>{%endblock%}
+
+
+
+
+{% block content %}
+<div class="grid place-items-center mt-40">
+
+    <div class="text-center">
+      <span class="text-teal-600 font-bold content-center lg:text-4xl md:text-2xl "> ENTER RECOVERY PIN </span>
+    </div>
+    <div class="form-control mt-10 text-center mx-auto lg:-ml-32 lg:mx-0">
+      <div class="input-group  ">
+        <div class="relative ">
+          <div class="absolute inset-y-0 right-14 flex items-center  ">
+            <input class="hidden js-password-toggle" id="toggle" type="checkbox" />
+          
+            <label class=" cursor-pointer js-password-label " for="toggle"><i
+                class="fa-solid fa-eye-slash fa-sm "></i></label>
+          </div>
+          <input type="password" placeholder="PIN" class=" input input-bordered lg:h-10  js-password"
+            id="password" />
+
+          <button class="btn btn-square h-px w-auto -ml-2.5">
+
+            <i class="fa-solid fa-arrow-right-to-bracket text-teal-600"></i>
+          </button>
+
+        </div>
+        
+      </div>
+      
+    </div>
+    <!-- <div class="container   text-center ml-10">
+      <a class="link link-hover text-xs mt-2  mx-auto"> <i class="fa fa-info-circle" aria-hidden="true"></i> </a>
+    </div> -->
+    
+
+    
+</div>
+    <script src="{% static 'src/eye.js' %}"></script>
+{% endblock %}
