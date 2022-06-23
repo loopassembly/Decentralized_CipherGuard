@@ -7,5 +7,6 @@ services:
       - '7000:8000'
     volumes:
       - ./app:/app
-    command: 'python manage.py runserver 0.0.0.0:8000'
+    command: 'python manage.py runserver 0.0.0.0:8000' 
+    # command: 'npm run build'
     image: password-manager_web

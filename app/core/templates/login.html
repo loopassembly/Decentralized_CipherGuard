@@ -2,7 +2,8 @@
 {% load static %}
 
 <!-- {%block style%} <link rel="stylesheet" href="{% static 'public/output.css' %}">{%endblock%} -->
-{%block snup%} <a class="btn hover:bg-teal-600 " href="{% url 'signup' %}"> create MS-PSWD</a>{%endblock%}
+{%block snup%} <a class="btn btn-sm hover:bg-teal-600 hover:text-white " href="{% url 'signup' %}"> create MS-PSWD  <i class="fa-solid fa-plus text-teal-600 ml-2 "></i></a>{%endblock%}
+<!-- <button class="btn btn-sm">Small</button> -->
 
     {% block content %}
    
@@ -42,3 +43,4 @@
       <script src="{% static 'src/eye.js' %}"></script>
        
     {% endblock content%}
+  

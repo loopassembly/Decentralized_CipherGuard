@@ -37,3 +37,8 @@
       width: 15rem/* 240px */;
   }
 }
+
+
+#button-text:hover{
+ color:white
+}
