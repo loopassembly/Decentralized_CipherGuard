@@ -3,6 +3,7 @@ console.log('eye.js');
 const passwordToggle = document.querySelector('.js-password-toggle')
 
 passwordToggle.addEventListener('change', function() {
+  console.log('change');
   const password = document.querySelector('.js-password'),
     passwordLabel = document.querySelector('.js-password-label')
     console.log('hewllo')

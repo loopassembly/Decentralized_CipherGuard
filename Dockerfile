@@ -1,4 +1,4 @@
-FROM python:3.8-alpine
+FROM python:3
 LABEL maintainer "Passmanager "
 ENV PYTHONUNBUFFERED 1
 RUN mkdir -p ./app
@@ -6,7 +6,7 @@ RUN mkdir -p ./app
 WORKDIR /app
 COPY ./requirements.txt /app/requirements.txt
 
-RUN pip install -r /requirements.txt
+RUN pip install -r requirements.txt
 COPY . /app
 
 

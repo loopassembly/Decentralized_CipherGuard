@@ -2,45 +2,87 @@
 {% load static %}
 
 <!-- {%block style%} <link rel="stylesheet" href="{% static 'public/output.css' %}">{%endblock%} -->
-{%block snup%} <a class="btn btn-sm hover:bg-teal-600 hover:text-white " href="{% url 'signup' %}"> create MS-PSWD  <i class="fa-solid fa-plus text-teal-600 ml-2 "></i></a>{%endblock%}
-<!-- <button class="btn btn-sm">Small</button> -->
+{%block snup%} <a  id="test" class="btn btn-sm hover:text-white " href="{% url 'signup' %}"> create MS-PSWD  <i class="fa-solid fa-plus text-teal-600 ml-2 "></i></a>{%endblock%}
+<!-- <button class="btn btn-sm">Small</button> hover:bg-teal-600 hover:text-white -->
 
     {% block content %}
    
+
+    {% for message in messages  %}    
+    <script>console.log('{{messages}}');</script>        
+    <div class="alert alert-warning shadow-lg mt-4 w-96 float-right h-10 rounded-lg" id="success">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <span>{{ message }}</span>
+      </div>
+    </div>
+    
+    {% endfor %}   
+  
     <div class="grid place-items-center mt-40">
 
       <div class="text-center">
         <span class="text-teal-600 font-bold content-center lg:text-4xl md:text-2xl "> ENTER MASTER PASSWORD </span>
       </div>
-      <div class="form-control mt-10 text-center mx-auto lg:-ml-32 lg:mx-0">
+      <!-- <div class="form-control mt-10 text-center mx-auto lg:-ml-32 lg:mx-0">
+        <input type="text" placeholder="Type here" class="input input-bordered lg:h-10 lg:w-72" />
+        
+      </div> -->
+    <form action="{% url 'login' %}" method="POST">
+      {% csrf_token %}
+      
+      <div class="form-control mt-4 text-center mx-auto lg:-ml-32 lg:mx-0">
+        <input type="text" placeholder="username or email" class="input input-bordered lg:h-10 lg:w-72 mb-6" name='user'/>
         <div class="input-group  ">
           <div class="relative ">
             <div class="absolute inset-y-0 right-14 flex items-center  ">
+              
               <input class="hidden js-password-toggle" id="toggle" type="checkbox" />
             
               <label class=" cursor-pointer js-password-label " for="toggle"><i
                   class="fa-solid fa-eye-slash fa-sm "></i></label>
+
+                
+
             </div>
-            <input type="password" placeholder="password" class=" input input-bordered lg:h-10 lg:w-72 js-password"
-              id="password" />
-  
-            <button class="btn btn-square h-px w-auto -ml-2.5">
+            <input type="password" placeholder="password" class=" input input-bordered lg:h-10 lg:w-72  passval js-password "
+              id="password" name="passw" />
+                <button class="btn btn-square h-px w-auto -ml-2.5" onclick="validation()">
   
               <i class="fa-solid fa-arrow-right-to-bracket text-teal-600"></i>
             </button>
   
           </div>
           
+          
         </div>
         
+     
+          
       </div>
+    
       <div class="container   text-center ml-10">
         <a class="link link-hover text-xs mt-2 ml-10 mx-auto" href="{% url 'forget' %}">forget password ?</a>
       </div>
+    </form> 
+
+    <!-- <form method = "POST">
+      {% csrf_token %}
+      {{ form }}
+      <input type = "submit" value = "Submit">
+  </form> -->
       
-      
+ 
   </div>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script>
+  $(document).ready(function(){
+    $("#success").delay(5000).slideUp(300); 
+});
+</script>
+      
       <script src="{% static 'src/eye.js' %}"></script>
+      <script src="{% static 'src/validation.js' %}"></script>
        
     {% endblock content%}
   
