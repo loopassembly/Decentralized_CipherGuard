@@ -8,19 +8,20 @@
     <div class=" grid place-items-center mt-16 ">
      
         <div class="text-center">
-            <span class="text-teal-600 font-bold content-center lg:text-4xl md:text-2xl "> ENTER MASTER PASSWORD </span>
+            <span class="text-teal-600 font-bold content-center lg:text-4xl md:text-2xl ">CREATE MASTER PASSWORD </span>
           </div>
           <form method="POST" action="" name="Rform">
             {% csrf_token %}
               <div class="mt-4 md:-ml-28 ">
                   <div>
                       <label class="text-white-100 text-sm font-bold mb-2" for="Name">Name</label>
-                        <input type="text" name="username" id="id_username" placeholder="Type here"  class=" input input-bordered w-full px-4 py-2 mt-2    focus:outline-none focus:ring-1 focus:ring-teal-600" value='{{usernam}}' >
+                        <input type="text" name="username" id="id_username" placeholder="Type here"  class=" input input-bordered w-full px-4 py-2 mt-2    focus:outline-none focus:ring-1 focus:ring-teal-600" value='{{data.username}}' >
                   </div>
                   <span class="text-xs text-red-400 formerror" id="Euser"></span>
                   <div class="mt-4">
                       <label class="text-white-100 text-sm font-bold mb-2" for="email">Email</label>
-                              <input type="email" placeholder="Email" name="email" id="id_email"
+                              <input type="email" placeholder="Email" name="email" 
+                              value='{{data.email}}'id="id_email"
                                   class=" input input-bordered w-full py-2 mt-2  focus:outline-none focus:ring-1 focus:ring-teal-600">
                   </div>
                   <span class="text-xs text-red-400 formerror" id="Eemail"></span>
@@ -28,6 +29,7 @@
                       <label class="text-white-100 text-sm font-bold mb-2">Password</label>
                       
                               <input type="password" 
+                              value='{{data.password1}}'
                                placeholder="Password" name="password1" id="id_password1"
                                   class=" input input-bordered w-full px-4 py-2 mt-2 focus:outline-none focus:ring-1 focus:ring-teal-600">
                   </div>
@@ -45,13 +47,13 @@
                   {% if error %}
                   <script>
                     if ('{{field}}' == "username") {
-                      document.getElementById("Euser").innerHTML = "{{error}}";
+                      document.getElementById("Euser").innerHTML = "*"+"{{error}}";
                     }
                    if('{{field}}' == "email"){
-                      document.getElementById("Eemail").innerHTML = "{{error}}";
+                      document.getElementById("Eemail").innerHTML =  "*"+"{{error}}";
                     }
                      if('{{field}}' == "password2"){
-                         document.getElementById("Epass2").innerHTML = "{{error}}";
+                         document.getElementById("Epass2").innerHTML = "*"+"{{error}}";
                       }
                   </script>
                   {% else %}
@@ -63,8 +65,8 @@
                   {% endfor %}
                   {% endfor %}
                   {% endif %}
-                  <div class="flex mb-10">
-                    <button class="btn  btn-outline mt-5 w-full md:" type="submit" onclick="validateForm(event)">Submit <i class="fa fa-paper-plane " aria-hidden="true"></i></button>
+                  <div class="flex mb-10" >
+                    <button id="sub-btn" class="btn  btn-outline mt-5 w-full" type="submit" onclick="validateForm(event)">Submit <i class="fa fa-paper-plane " aria-hidden="true"></i></button>
                   </div>
                   
               </div>
@@ -78,52 +80,10 @@
    
        
        
-        
-        <script>
-        console.log("{{field}}");
-        </script>
-       
+      
         
         
 
     
-      <!-- <script>
-
-        function Registersubmit(event){
-            var username = document.getElementById('id_username').value;
-            var email = document.getElementById('id_email').value;
-            var password1 = document.getElementById('id_password1').value;
-            var password2 = document.getElementById('id_password2').value;
-            var error = document.getElementsByClassName('UserErText');
-            //form validation js
-            if(username == ''){
-                alert('username is required');
-                event.preventDefault();
-            }
-            else if(email == ''){
-                alert('email is required');
-                event.preventDefault();
-            }
-            else if(password1 == ''){
-                alert('password is required');
-                event.preventDefault();
-            }
-           else if(password2 == ''){
-                alert('password is required');
-                event.preventDefault();
-            }
-           else if(password1 != password2){
-                alert('password must be same');
-                event.preventDefault();
-            }
-         
-            else{
-                alert('success');
-            }
-
-        }
-
-
-
-      </script> -->
+    
         {% endblock %}

@@ -1,0 +1,67 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="alert alert-success shadow-lg mt-4 w-96 float-right h-10 rounded-lg" id="al-success">
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    <span>Email Sent to {{user_email}} </span>
+  </div>
+</div>
+
+
+<div class="grid place-items-center mt-40">
+
+    
+    <div>
+      <span class="text-teal-600 font-bold lg:text-4xl md:text-2xl  text-left "> EMAIL CONFERMATION </span><br>
+      <div class="mt-5 ml-2"><span class="  font-light text-red-400  ">*Please confirm your email address to complete the registration.<br>In case you didnt receive confermation email <a  class="btn btn-xs" id="update_log_button" onclick="run_function()">Resend Email</a></span></div>
+     
+    </div>
+    <!-- href="{% url 'email_sent' %}" -->
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $("#al-success").delay(2000).slideUp(300); 
+});
+
+function alert_msg() {
+  if ( $("#al-success").is( ":hidden" ) ) {
+    $("#al-success").show( "slow" );
+    $("#al-success").delay(2000).slideUp(300); 
+  } else {
+    $("#al-success").slideUp();
+  }
+}
+
+function run_function(){
+  console.log("running");
+ alert_msg();
+    //$("#al-success"). lay(5000).slideUp(300); 
+
+  $.ajax({
+      url : "{% url 'email_sent' %}", // the endpoint
+      type : "GET", // http method
+      data : "send_mail" , // data sent with the get request
+
+      // handle a successful response
+      success : function(json) {
+          console.log("success"); // another sanity check
+      },
+
+      // handle a non-successful response
+      error : function(xhr,errmsg,err) {
+          console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+      }
+  });
+};
+
+
+
+
+</script>
+{% endblock content%}
+

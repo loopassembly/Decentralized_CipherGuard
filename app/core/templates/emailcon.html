@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+<div class="grid place-items-center mt-40">
+
+    
+  <div>
+    <span class="text-teal-600 font-bold lg:text-4xl md:text-2xl  text-left "> EMAIL CONFERMATION </span><br>
+    <div class="mt-5 ml-2"><span class="break-words  font-light text-red-400  ">Thankyou for your email confermation Now u can <a class="btn btn-xs" href='{%url "login"%}'>login </a></a> using your crendiantial <br>For futher query ,information or need any help regarding passmanger   <a  class="btn btn-xs" href="https://loopassembly.in/" >loopassembly.in  </a></span></div>
+   
+  </div>
+  <!-- href="{% url 'email_sent' %}" -->
+</div>
+{% endblock content%}
+

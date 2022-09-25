@@ -1,7 +1,7 @@
-
+{% load static %}
 
 <!DOCTYPE html>
-{% load static %}
+
 <html lang="en">
 
 <head>
@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
   <title>Document</title>
 </head>
 
@@ -20,6 +21,9 @@
 
   <div class="navbar bg-gray-700">
     <div class="navbar-start">
+      {%block navele%}
+     
+      {%endblock navele%}
       <!-- <div class="dropdown">
         <label tabindex="0" class="btn btn-ghost btn-circle">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -17,6 +17,7 @@ function test(name,email,password,cpasword){
 }
 
 function validateForm(event){
+    
     var returnval = true;
     clearErrors();
 
@@ -68,8 +69,14 @@ function validateForm(event){
 
    
     if (returnval == true){ 
+        document.forms['Rform'].submit();
+        document.getElementById('sub-btn').setAttribute("disabled","disabled");
         console.log('all pas')//if all validation passes, submit the form
         test(name,email,password,cpassword);
+       
+
+       
+        // document.getElementById('blahButton').disabled = true ;
 
     }
     

@@ -5,15 +5,30 @@
 {%block snup%} <a  id="test" class="btn btn-sm hover:text-white " href="{% url 'signup' %}"> create MS-PSWD  <i class="fa-solid fa-plus text-teal-600 ml-2 "></i></a>{%endblock%}
 <!-- <button class="btn btn-sm">Small</button> hover:bg-teal-600 hover:text-white -->
 
-    {% block content %}
-   
+{% block content %}
+   {%if email_status == False%}
+   <div class="text-center bg-info">
+  <form action="" method="POST">
+    {% csrf_token %}
+    <input name='email_val' class="hidden" value="email"/>
+    <span class="text-black">Verify your email address to activate your account</span>
+     <button  class="btn btn-xs text-xs my-1"  id="l-send" type="submit" onclick="run()" >Resend Email</button> 
+  </form>
+   </div>
+   {%endif%}
+
+
+
+
 
     {% for message in messages  %}    
     <script>console.log('{{messages}}');</script>        
     <div class="alert alert-warning shadow-lg mt-4 w-96 float-right h-10 rounded-lg" id="success">
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        <span>{{ message }}</span>
+        
+        <span>{{ message}}</span>
+     
       </div>
     </div>
     
@@ -32,7 +47,7 @@
       {% csrf_token %}
       
       <div class="form-control mt-4 text-center mx-auto lg:-ml-32 lg:mx-0">
-        <input type="text" placeholder="username or email" class="input input-bordered lg:h-10 lg:w-72 mb-6" name='user'/>
+        <input type="text" placeholder="username or email" class="input input-bordered lg:h-10 lg:w-72 mb-6" name='username'/>
         <div class="input-group  ">
           <div class="relative ">
             <div class="absolute inset-y-0 right-14 flex items-center  ">
@@ -45,9 +60,9 @@
                 
 
             </div>
-            <input type="password" placeholder="password" class=" input input-bordered lg:h-10 lg:w-72  passval js-password "
+            <input type="password" placeholder="password" class=" input input-bordered lg:h-10 lg:w-72   passval js-password "
               id="password" name="passw" />
-                <button class="btn btn-square h-px w-auto -ml-2.5" onclick="validation()">
+                <button class="btn btn-square h-px w-auto -ml-2.5"   type="submit">
   
               <i class="fa-solid fa-arrow-right-to-bracket text-teal-600"></i>
             </button>
@@ -62,7 +77,7 @@
       </div>
     
       <div class="container   text-center ml-10">
-        <a class="link link-hover text-xs mt-2 ml-10 mx-auto" href="{% url 'forget' %}">forget password ?</a>
+        <a class="link link-hover text-xs mt-2 ml-10 mx-auto" href="{% url 'password_reset' %}">forget password ?</a>
       </div>
     </form> 
 
@@ -75,10 +90,47 @@
  
   </div>
   <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script>
   $(document).ready(function(){
     $("#success").delay(5000).slideUp(300); 
 });
+
+
+    var xhr = null;
+    
+       function run(){
+        xhr =$.ajax({
+            type: 'POST',
+            url:'{% url "login" %}',
+            data:{
+                'email_val':'email',
+                'csrfmiddlewaretoken':'{{ csrf_token }}'
+                
+            },
+            success: function(){
+               console.log('created');
+               console.log(String('{% url "login" %}'));
+            }
+        })
+      }
+   
+      window.onbeforeunload = onUnload;
+
+      function onUnload() {
+          if(xhr) {
+            xhr.abort();
+          return "some message";
+          console.log('refreshed');}
+      };
+      //window.onbeforeunload = function() { 
+      //  window.setTimeout(function () { 
+       //     window.location = '{% url "login"%}';
+     //   }, 0); 
+  //      window.onbeforeunload = null; // necessary to prevent infinite loop, that kills your browser 
+  //  }
+  
+
 </script>
       
       <script src="{% static 'src/eye.js' %}"></script>

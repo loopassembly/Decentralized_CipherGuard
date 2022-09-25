@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from .models import *
 
 class Login(forms.Form):
-    user = forms.CharField(max_length=100)
+    username = forms.CharField(max_length=100)
     passw = forms.CharField(max_length=100,widget=forms.PasswordInput)
   
     
@@ -21,7 +21,8 @@ class CreateUserForm(UserCreationForm):
 		model = User
 		fields = ['username', 'email', 'password1', 'password2']
 
-	# def __init__(self, *args, **kwargs):
-	# 	super(User, self).__init__(*args, **kwargs)
-	# 	self.fields['username'].widget.attrs['values'] = 'class1'
+class CreatePasswordForm(ModelForm):
+	class Meta:
+		model = Userpassword
+		fields = ['platform', 'password']
        

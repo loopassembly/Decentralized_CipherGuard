@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+from django.utils.timezone import activate
+from django.conf import settings
+from pytz import timezone
+
+activate(settings.TIME_ZONE)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +31,7 @@ SECRET_KEY = 'django-insecure-yym_+40^5o8y$3=ofqh!=!udhc!5q7rz_v--7c0c++n65$!7us
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'crispy_forms'
+    
 ]
 
 MIDDLEWARE = [
@@ -49,9 +56,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.contrib.admin',
+    # 'django.contrib.auth',
+    # 'django.contrib.contenttypes',
+    # 'django.contrib.sessions',
+    # 'django.contrib.messages',
+    # 'django.contrib.staticfiles',
 ]
 
 ROOT_URLCONF = 'passmanager.urls'
+
+# AUTHENTICATION_BACKENDS = ( 'urlcrypt.auth_backends.UrlCryptBackend' )
 
 TEMPLATES = [
     {
@@ -73,17 +88,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'passmanager.wsgi.application'
 
-
+CRISPY_TEMPLATE_PACK = 'uni_form'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'default': {
+            'ENGINE': 'djongo',
+            'NAME': 'PasswordManager',
+            'ENFORCE_SCHEMA': False,
+            'CLIENT': {
+                'host': 'mongodb+srv://loopassembly:deauther-2560@cluster0.cwtfb.mongodb.net/test'
+            }  
+        }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -132,6 +156,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = 'password'
+# LOGOUT_REDIRECT_URL = 'login'
 LOGIN_URL = '/'
 # email config
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

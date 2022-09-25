@@ -38,6 +38,9 @@
   }
 }
 
+.font-light{
+  font-weight: 300;
+}
 
 .modal-action-pass {
     display: flex;
@@ -48,4 +51,36 @@
     --tw-space-x-reverse: 0;
     margin-right: calc(0.5rem * var(--tw-space-x-reverse));
     margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.w-82 {
+  width: 18rem;
+    
+  
+}
+.mr-16{
+  margin-right: 7rem;
+}
+.ml-5 {
+  margin-left: 1.5rem;
+}
+
+::-webkit-scrollbar {
+  height: 10px;              /* height of horizontal scrollbar ← You're missing this */
+  width: 20px;               /* width of vertical scrollbar */
+ 
+}
+::-webkit-scrollbar-thumb:horizontal{
+  height: 6px;
+  border-radius: 8px;
+  width: 50px;
+ 
+  
+  background-color: #242933;  
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1F242D; 
+}
+
+.top-1-2 {
+  top: 0.3rem;
 }
