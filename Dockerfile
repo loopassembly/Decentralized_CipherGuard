@@ -2,6 +2,7 @@ FROM python:3
 LABEL maintainer "Passmanager "
 ENV PYTHONUNBUFFERED 1
 RUN mkdir -p ./app
+RUN apt-get update && apt-get install -y cmake
 
 WORKDIR /app
 COPY ./requirements.txt /app/requirements.txt

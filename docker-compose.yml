@@ -1,12 +1,13 @@
 version: '3'
 services:
   web:
-    build: 
-      context: .
+    build: .
+      
     ports:
-      - '7000:8000'
+      # - '7000:8000'
+      - "8000:8000"
     volumes:
       - ./app:/app
-    command: 'python manage.py runserver 0.0.0.0:8000' 
+    command: 'python manage.py runserver 0.0.0:8000' 
     # command: 'npm run build'
     image: password-manager_web
