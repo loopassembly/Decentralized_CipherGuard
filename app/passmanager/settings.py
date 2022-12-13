@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-yym_+40^5o8y$3=ofqh!=!udhc!5q7rz_v--7c0c++n65$!7us
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','password-manager-production-a329.up.railway.app']
 
 
 # Application definition
