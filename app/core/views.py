@@ -53,8 +53,8 @@ def LoginUser(request):
         'form':form,
         'email_status': True}
 
-    # if request.user.is_authenticated:
-    #     return password(request)
+    if request.user.is_authenticated:
+        return password(request)
     if request.POST:
         if form.is_valid():
             name = request.POST.get('username')

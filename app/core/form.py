@@ -19,6 +19,7 @@ class CustomerForm(ModelForm):
 class CreateUserForm(UserCreationForm):
 	class Meta:
 		model = User
+		model._meta.get_field('email')._unique = True
 		fields = ['username', 'email', 'password1', 'password2']
 
 class CreatePasswordForm(ModelForm):

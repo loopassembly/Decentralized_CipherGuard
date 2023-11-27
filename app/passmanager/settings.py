@@ -11,27 +11,38 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
 import os
+import django_heroku
 from django.utils.timezone import activate
 from django.conf import settings
 from pytz import timezone
 
+import environ
+# Initialise environment variables
+# env = environ.Env()
+# environ.Env.read_env()
+load_dotenv()
+# Semail=os.getenv('emailuser')
+# Spassword=os.getenv('aoqffejnecuvobdx')
+# print(Spassword,Semail)
 activate(settings.TIME_ZONE)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-yym_+40^5o8y$3=ofqh!=!udhc!5q7rz_v--7c0c++n65$!7us'
+SECRET_KEY = os.getenv('SECRET_KEY'),
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','http://10.3.82.194']
 
 
 # Application definition
@@ -44,7 +55,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'crispy_forms'
+    'crispy_forms',
+    'django_extensions',
+    
     
 ]
 
@@ -92,22 +105,23 @@ CRISPY_TEMPLATE_PACK = 'uni_form'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
-        'default': {
-            'ENGINE': 'djongo',
-            'NAME': 'PasswordManager',
-            'ENFORCE_SCHEMA': False,
-            'CLIENT': {
-                'host': 'mongodb+srv://loopassembly:deauther-2560@cluster0.cwtfb.mongodb.net/test'
-            }  
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+# DATABASES = {
+#         'default': {
+#             'ENGINE': 'djongo',
+#             'NAME': os.getenv('NAME'),
+#             'ENFORCE_SCHEMA': False,
+#             'CLIENT': {
+#                 'host':os.getenv('host')
+                
+#             }  
+#         }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -143,13 +157,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATICFILES_DIRS=[
+#     os.path.join(BASE_DIR,"static"),
+# ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -162,6 +179,9 @@ LOGIN_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True  
 EMAIL_HOST = 'smtp.gmail.com'  
-EMAIL_HOST_USER = 'loopassembly@gmail.com'  
-EMAIL_HOST_PASSWORD = 'cpezwrwbwiaxypub'  
+EMAIL_HOST_USER = 'loopassembly@gmail.com'
+EMAIL_HOST_PASSWORD ='dbtmwotfkbjjkvha' 
+
 EMAIL_PORT = 587  
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000/','http://10.3.82.194:8080/','http://10.3.82.194:2560']
+# django_heroku.settings(locals())

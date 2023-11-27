@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.h-px {
+    height: 2.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    min-height: 2.5rem;
+    font-size: 0.875rem;
+    
+  }
+.mt-28{
+    margin-top: 4rem;
+
+}
+
+.mt-20{
+  margin-top: 3rem.5rem;
+}
+.lg\:w-80 {
+  width: 20rem;
+}
+.lg\:w-75 {
+  width: 18.7rem;
+}
+.btn-wide {
+  width: 16rem/* 256px */;
+}
+
+.mt-5 {
+  margin-top: 1.25rem/* 20px */;
+}
+
+@media (min-width: 1024px) {
+  .lg\:w-60 {
+      width: 15rem/* 240px */;
+  }
+}
+
+.font-light{
+  font-weight: 300;
+}
+
+.modal-action-pass {
+    display: flex;
+    margin-top: 1.5rem/* 24px */;
+    justify-content: center;
+}
+.modal-action-pass > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.w-82 {
+  width: 18rem;
+    
+  
+}
+.mr-16{
+  margin-right: 7rem;
+}
+.ml-5 {
+  margin-left: 1.5rem;
+}
+
+::-webkit-scrollbar {
+  height: 10px;              /* height of horizontal scrollbar ← You're missing this */
+  width: 20px;               /* width of vertical scrollbar */
+ 
+}
+::-webkit-scrollbar-thumb:horizontal{
+  height: 6px;
+  border-radius: 8px;
+  width: 50px;
+ 
+  
+  background-color: #242933;  
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1F242D; 
+}
+
+.top-1-2 {
+  top: 0.3rem;
+}
